@@ -36,7 +36,7 @@ const Header = class extends React.Component {
     return (
       <div className="logo">
         <Link to="/">
-          <img src="/img/logo.png" alt="" />
+          <img src="/img/logo.png" alt="Sola Plexus Logo" />
         </Link>
       </div>
     )

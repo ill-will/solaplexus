@@ -8,7 +8,7 @@ import { withPrefix } from "gatsby"
 
 const TemplateWrapper = ({ children, colors }) => {
   const { title, description } = useSiteMetadata()
-  const { bgcolor, txtcolor, accolor } = colors
+  const { bgcolor } = colors
 
   return (
     <div>

@@ -1,21 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { BlogPostTemplate } from '../../templates/blog-post'
+import { ReleasePageTemplate } from '../../templates/release-page'
 
-const BlogPostPreview = ({ entry, widgetFor }) => (
-  <BlogPostTemplate
+const ReleasePagePreview = ({ entry, widgetFor }) => (
+  <ReleasePageTemplate
     content={widgetFor('body')}
-    description={entry.getIn(['data', 'description'])}
-    tags={entry.getIn(['data', 'tags'])}
     title={entry.getIn(['data', 'title'])}
+    artwork={entry.getIn(['data', 'artwork'])}
+    listenLink={entry.getIn(['data', 'listenLink'])}
+    bgcolor={entry.getIn(['data', 'bgcolor'])}
+    txtcolor={entry.getIn(['data', 'txtcolor'])}
+    accolor={entry.getIn(['data', 'accolor'])}
   />
 )
 
-BlogPostPreview.propTypes = {
+ReleasePagePreview.propTypes = {
   entry: PropTypes.shape({
     getIn: PropTypes.func,
   }),
   widgetFor: PropTypes.func,
 }
 
-export default BlogPostPreview
+export default ReleasePagePreview
