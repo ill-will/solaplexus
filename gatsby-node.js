@@ -4,11 +4,11 @@ const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
 exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
 
-  return graphql(`
+  graphql(`
     {
-      allMarkdownRemark(limit: 1000) {
+      allMarkdownRemark(limit: 1000, filter: {frontmatter: {templateKey: {ne: "release-page"}}}) {
         edges {
           node {
             id
@@ -16,7 +16,6 @@ exports.createPages = ({ actions, graphql }) => {
               slug
             }
             frontmatter {
-              tags
               templateKey
             }
           }
@@ -31,11 +30,10 @@ exports.createPages = ({ actions, graphql }) => {
 
     const posts = result.data.allMarkdownRemark.edges
 
-    posts.forEach(edge => {
+    posts.forEach((edge, index) => {
       const id = edge.node.id
       createPage({
         path: edge.node.fields.slug,
-        tags: edge.node.frontmatter.tags,
         component: path.resolve(
           `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
         ),
@@ -45,6 +43,57 @@ exports.createPages = ({ actions, graphql }) => {
         },
       })
     })
+  })
+
+  return graphql(`
+    {
+      allMarkdownRemark(limit: 1000, filter: {frontmatter: {templateKey: {eq: "release-page"}}}, , sort: {fields: frontmatter___date, order: DESC}) {
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              templateKey
+            }
+          }
+        }
+      }
+    }
+  `).then(result => {
+    if (result.errors) {
+      result.errors.forEach(e => console.error(e.toString()))
+      return Promise.reject(result.errors)
+    }
+
+    const posts = result.data.allMarkdownRemark.edges
+    var latestRelease = posts[0].node.fields.slug
+
+    posts.forEach((edge, index) => {
+      const id = edge.node.id
+      const prev = index === 0 ? null : posts[index-1].node
+      const next = index === posts.length - 1 ? null : posts[index + 1].node
+      createPage({
+        path: edge.node.fields.slug,
+        component: path.resolve(
+          `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
+        ),
+        // additional data can be passed via context
+        context: {
+          id,
+          prev,
+          next
+        },
+      })
+    })
+
+    createRedirect({
+    fromPath: `/`,
+    toPath: latestRelease,
+    redirectInBrowser: true,
+    isPermanent: true,
+  })
   })
 }
 

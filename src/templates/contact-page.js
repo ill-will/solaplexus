@@ -22,9 +22,10 @@ ContactPageTemplate.propTypes = {
 
 const ContactPage = ({ data }) => {
   const { markdownRemark: post } = data
+  const colors = {bgcolor: "black", txtcolor: "grey", accolor: "tomato"}
 
   return (
-    <Layout>
+    <Layout colors={colors}>
       <ContactPageTemplate
         contentComponent={HTMLContent}
         title={post.frontmatter.title}

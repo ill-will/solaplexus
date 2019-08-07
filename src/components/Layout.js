@@ -6,8 +6,10 @@ import './all.sass'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from "gatsby"
 
-const TemplateWrapper = ({ children }) => {
+const TemplateWrapper = ({ children, colors }) => {
   const { title, description } = useSiteMetadata()
+  const { bgcolor, txtcolor, accolor } = colors
+
   return (
     <div>
       <Helmet>
@@ -45,10 +47,10 @@ const TemplateWrapper = ({ children }) => {
         <meta property="og:url" content="/" />
         <meta property="og:image" content={`${withPrefix("/")}img/og-image.jpg`} />
       </Helmet>
-      <div className="container">
+      <div className="container" style={{backgroundColor: `${bgcolor}`}}>
         <Header />
         <div>{children}</div>
-        <Footer />
+        <Footer colors={colors}/>
       </div>
     </div>
   )
