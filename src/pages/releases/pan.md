@@ -5,8 +5,8 @@ date: 2013-08-09T00:00:00.000Z
 artwork: /img/00sola_plexus_pan.jpg
 listenLink: 'https://www.solaplexus.de'
 bgcolor: black
-txtcolor: yellow
-accolor: tomato
+txtcolor: grey
+accolor: '#6917ff'
 ---
 To be honest our debute PAN is a stressful record.\
 It's density makes listening to it quite a ride.\
