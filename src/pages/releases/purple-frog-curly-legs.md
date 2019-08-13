@@ -3,7 +3,7 @@ templateKey: release-page
 title: Purple Frog Curly Legs
 date: 2019-08-09T00:00:00.000Z
 artwork: /img/pfcl-cover.jpg
-listenLink: 'https://open.spotify.com/album/7Jh381C0SMAO4qNEf2OuxP'
+listenLink: 'https://lnkfi.re/purplefrog'
 bgcolor: black
 txtcolor: grey
 accolor: tomato
