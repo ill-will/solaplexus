@@ -78,8 +78,10 @@ const ReleasePage = ({ data, pageContext }) => {
   const accolor = release.frontmatter.accolor || "tomato"
   const colors = {bgcolor: bgcolor, txtcolor: txtcolor, accolor: accolor}
 
+  const logoPath = release.frontmatter.logoPath.publicURL
+
   return (
-    <Layout colors={colors}>
+    <Layout colors={colors} logoPath={logoPath}>
       <ReleasePageTemplate
         content={release.html}
         contentComponent={HTMLContent}
@@ -124,6 +126,9 @@ export const pageQuery = graphql`
         bgcolor
         txtcolor
         accolor
+        logoPath {
+          publicURL
+        }
       }
     }
   }

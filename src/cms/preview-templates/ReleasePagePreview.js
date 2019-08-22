@@ -11,6 +11,7 @@ const ReleasePagePreview = ({ entry, widgetFor }) => (
     bgcolor={entry.getIn(['data', 'bgcolor'])}
     txtcolor={entry.getIn(['data', 'txtcolor'])}
     accolor={entry.getIn(['data', 'accolor'])}
+    logoPath={entry.getIn(['data', 'logoPath'])}
   />
 )
 

@@ -7,6 +7,7 @@ listenLink: 'https://www.solaplexus.de'
 bgcolor: black
 txtcolor: grey
 accolor: '#6917ff'
+logoPath: /img/logo.png
 ---
 To be honest our debute PAN is a stressful record.\
 It's density makes listening to it quite a ride.\

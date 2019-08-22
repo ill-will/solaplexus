@@ -21,6 +21,7 @@ collections:
       - {label: "Background Color", name: "bgcolor", widget: "string", default: "black"}
       - {label: "Main Text Color", name: "txtcolor", widget: "string", default: "grey"}
       - {label: "Accent Text Color", name: "accolor", widget: "string", default: "tomato"}
+      - {label: "Logo", name: "logoPath", widget: "image"}
 
   - name: "pages"
     label: "Pages"

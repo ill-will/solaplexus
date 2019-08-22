@@ -5,7 +5,7 @@ import Header from '../components/Header'
 import './all.sass'
 import useSiteMetadata from './SiteMetadata'
 
-const TemplateWrapper = ({ children, colors }) => {
+const TemplateWrapper = ({ children, colors, logoPath }) => {
   const { title, description } = useSiteMetadata()
   const { bgcolor } = colors
 
@@ -18,7 +18,7 @@ const TemplateWrapper = ({ children, colors }) => {
         <meta name="theme-color" content="#fff" />
       </Helmet>
       <div className="container" style={{backgroundColor: `${bgcolor}`}}>
-        <Header />
+        <Header logo={logoPath}/>
         <div>{children}</div>
         <Footer colors={colors}/>
       </div>
